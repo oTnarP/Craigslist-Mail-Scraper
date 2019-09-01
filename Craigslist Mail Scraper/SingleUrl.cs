@@ -11,6 +11,8 @@ namespace Craigslist_Mail_Scraper
         public ListView listView { get; set; }
         public TextBox txtLog { get; set; }
 
+        int serial = 1;
+
         public void Scrape()
         {
             Label.CheckForIllegalCrossThreadCalls = false;
@@ -56,12 +58,12 @@ namespace Craigslist_Mail_Scraper
                     //Extract the mail
                     string mail = driver.FindElement(By.XPath("//a[@class='mailapp']")).Text;
                     txtLog.Text = "User Mail: " + mail;
-                    ListViewItem item = new ListViewItem(i.ToString());
+                    ListViewItem item = new ListViewItem(serial.ToString());
                     item.SubItems.Add(driver.Url);
                     item.SubItems.Add(title);
                     item.SubItems.Add(mail);
                     listView.Items.Add(item);
-
+                    serial++;
                 }
                 catch
                 {

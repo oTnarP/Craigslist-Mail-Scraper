@@ -11,6 +11,8 @@ namespace Craigslist_Mail_Scraper
         public ListBox listCategories { get; set; }
         public TextBox txtLog { get; set; }
 
+        int serial = 1;
+
         public void Scrape()
         {
             Label.CheckForIllegalCrossThreadCalls = false;
@@ -60,12 +62,12 @@ namespace Craigslist_Mail_Scraper
 
                         txtLog.Text = "User Mail: " + mail;
 
-                        ListViewItem item = new ListViewItem(i.ToString());
+                        ListViewItem item = new ListViewItem(serial.ToString());
                         item.SubItems.Add(driver.Url);
                         item.SubItems.Add(title);
                         item.SubItems.Add(mail);
                         listView.Items.Add(item);
-
+                        serial++;
                     }
                     catch
                     {
@@ -82,8 +84,7 @@ namespace Craigslist_Mail_Scraper
                 {
                     listCategories.SelectedIndex = listCategories.SelectedIndex + 1;
                 }
-
-
+                
             }
 
             driver.Quit();
