@@ -27,7 +27,7 @@ namespace Craigslist_Mail_Scraper
             service.HideCommandPromptWindow = true;
             var options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
-            options.AddArguments("headless");
+            //options.AddArguments("headless");
             options.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:48.0) Gecko/20100101 Firefox/48.0");
 
@@ -55,7 +55,7 @@ namespace Craigslist_Mail_Scraper
                         txtLog.Text = "Post Title is: " + title;
                         //Click on Reply Button
                         driver.FindElement(By.XPath("//button[contains(text(), 'reply')]")).Click();
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
 
                         //Extract the mail
                         string mail = driver.FindElement(By.XPath("//a[@class='mailapp']")).Text;
