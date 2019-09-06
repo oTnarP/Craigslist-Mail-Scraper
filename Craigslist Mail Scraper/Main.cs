@@ -38,6 +38,9 @@ namespace Craigslist_Mail_Scraper
                         su.Url = txtUrl.Text;
                         su.listView = listView;
                         su.txtLog = txtLog;
+                        su.chkHasImage = chkHasImage;
+                        su.chkNearby = chkNearby;
+                        su.chkPostedToday = chkPostedToday;
                         th = new Thread(() => su.Scrape());
                         th.Start();
                         btnRun.Text = "Stop";
@@ -58,6 +61,9 @@ namespace Craigslist_Mail_Scraper
                         bu.listCategories = listCategories;
                         bu.listView = listView;
                         bu.txtLog = txtLog;
+                        bu.chkHasImage = chkHasImage;
+                        bu.chkNearby = chkNearby;
+                        bu.chkPostedToday = chkPostedToday;
                         th = new Thread(() => bu.Scrape());
                         th.Start();
                         btnRun.Text = "Stop";

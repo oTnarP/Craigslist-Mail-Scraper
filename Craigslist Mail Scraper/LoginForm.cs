@@ -24,51 +24,7 @@ namespace Craigslist_Mail_Scraper
         {
             Application.Exit();
         }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            if (txtUser.Text == "USERNAME")
-            {
-                MessageBox.Show("Please, Enter your Username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            else if (txtPass.Text == "PASSWORD")
-            {
-                MessageBox.Show("Please, Enter your Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            else
-            {
-                try
-                {
-                    Registration rg = new Registration();
-                    rg.CheckInfo(txtUser, txtPass);
-
-                    if (rg.Report == "Active")
-                    {
-                        var mf = new Main();
-                        mf.Show();
-                        this.Hide();
-                    }
-
-                    else if (rg.Report == "Deactive")
-                    {
-                        MessageBox.Show("Your license is expired!!", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("Username or Password is incorrect.", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Please check your connection!", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
+        
 
         private void txtUser_Enter(object sender, EventArgs e)
         {
@@ -127,6 +83,59 @@ namespace Craigslist_Mail_Scraper
         private void LoginForm_Click(object sender, EventArgs e)
         {
             this.ActiveControl = btnExit;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtUser.Text == "USERNAME")
+            {
+                MessageBox.Show("Please, Enter your Username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            else if (txtPass.Text == "PASSWORD")
+            {
+                MessageBox.Show("Please, Enter your Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            else
+            {
+                try
+                {
+                    Registration rg = new Registration();
+                    rg.CheckInfo(txtUser, txtPass, "CMScraper");
+
+                    if (rg.Report == "Active")
+                    {
+                        var mf = new Main();
+                        mf.Show();
+                        this.Hide();
+                    }
+
+                    else if (rg.Report == "Deactive")
+                    {
+                        MessageBox.Show("Your license is expired!!", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Username or Password is incorrect.", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Please check your connection!", "Important Notice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

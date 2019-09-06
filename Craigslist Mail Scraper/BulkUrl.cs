@@ -10,6 +10,9 @@ namespace Craigslist_Mail_Scraper
         public ListView listView { get; set; }
         public ListBox listCategories { get; set; }
         public TextBox txtLog { get; set; }
+        public CheckBox chkPostedToday { get; set; }
+        public CheckBox chkHasImage { get; set; }
+        public CheckBox chkNearby { get; set; }
 
         int serial = 1;
 
@@ -27,7 +30,7 @@ namespace Craigslist_Mail_Scraper
             service.HideCommandPromptWindow = true;
             var options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
-            //options.AddArguments("headless");
+            options.AddArguments("headless");
             options.AddUserProfilePreference("profile.default_content_setting_values.images", 2);
             options.AddArgument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:48.0) Gecko/20100101 Firefox/48.0");
 
@@ -38,6 +41,46 @@ namespace Craigslist_Mail_Scraper
                 //Go To Category Url
                 driver.Navigate().GoToUrl(listCategories.Text);
                 txtLog.Text = "Navigating to the category...";
+
+                if (chkPostedToday.Checked == true && chkNearby.Checked == true && chkHasImage.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='postedToday' and @type='checkbox']")).Click();
+                    driver.FindElement(By.XPath("//input[@name='hasPic' and @type='checkbox']")).Click();
+                    driver.FindElement(By.XPath("//input[@name='searchNearby' and @type='checkbox']")).Click();
+
+                }
+
+                else if (chkPostedToday.Checked == true && chkHasImage.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='postedToday' and @type='checkbox']")).Click();
+                    driver.FindElement(By.XPath("//input[@name='hasPic' and @type='checkbox']")).Click();
+                }
+                else if (chkPostedToday.Checked == true && chkNearby.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='postedToday' and @type='checkbox']")).Click();
+                    driver.FindElement(By.XPath("//input[@name='searchNearby' and @type='checkbox']")).Click();
+                }
+                else if (chkHasImage.Checked == true && chkNearby.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='hasPic' and @type='checkbox']")).Click();
+                    driver.FindElement(By.XPath("//input[@name='searchNearby' and @type='checkbox']")).Click();
+                }
+                else if (chkPostedToday.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='postedToday' and @type='checkbox']")).Click();
+                }
+                else if (chkHasImage.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='hasPic' and @type='checkbox']")).Click();
+                }
+                else if (chkNearby.Checked == true)
+                {
+                    driver.FindElement(By.XPath("//input[@name='searchNearby' and @type='checkbox']")).Click();
+                }
+                else
+                {
+                    //
+                }
 
                 //Count all the Posts
                 int count = driver.FindElements(By.XPath("//a[@class='result-title hdrlnk']")).Count;
@@ -51,6 +94,7 @@ namespace Craigslist_Mail_Scraper
                         //Go To Post Urls
                         driver.FindElement(By.XPath("(//a[@class='result-title hdrlnk'])[" + i + "]")).Click();
 
+                        //Scrape Title
                         string title = driver.FindElement(By.XPath("//span[@id='titletextonly']")).Text;
                         txtLog.Text = "Post Title is: " + title;
                         //Click on Reply Button

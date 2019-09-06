@@ -45,12 +45,16 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.chkPostedToday = new System.Windows.Forms.CheckBox();
+            this.chkHasImage = new System.Windows.Forms.CheckBox();
+            this.chkNearby = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
             this.label1.Location = new System.Drawing.Point(16, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 15);
@@ -66,7 +70,7 @@
             this.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRun.Font = new System.Drawing.Font("Raleway SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRun.ForeColor = System.Drawing.Color.White;
-            this.btnRun.Location = new System.Drawing.Point(712, 66);
+            this.btnRun.Location = new System.Drawing.Point(712, 112);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(80, 23);
             this.btnRun.TabIndex = 8;
@@ -94,13 +98,14 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.listView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
             this.listView.FullRowSelect = true;
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(0, 95);
+            this.listView.Location = new System.Drawing.Point(0, 141);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(804, 264);
+            this.listView.Size = new System.Drawing.Size(804, 285);
             this.listView.TabIndex = 10;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -129,6 +134,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
             this.label2.Location = new System.Drawing.Point(411, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 15);
@@ -155,6 +161,7 @@
             // 
             this.txtBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(251)))));
             this.txtBrowse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBrowse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
             this.txtBrowse.Location = new System.Drawing.Point(503, 19);
             this.txtBrowse.Name = "txtBrowse";
             this.txtBrowse.ReadOnly = true;
@@ -171,7 +178,7 @@
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Raleway SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.ForeColor = System.Drawing.Color.White;
-            this.btnExport.Location = new System.Drawing.Point(626, 66);
+            this.btnExport.Location = new System.Drawing.Point(626, 112);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(80, 23);
             this.btnExport.TabIndex = 14;
@@ -197,7 +204,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Raleway SemiBold", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(540, 66);
+            this.btnClear.Location = new System.Drawing.Point(540, 112);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(80, 23);
             this.btnClear.TabIndex = 16;
@@ -209,7 +216,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 69);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(16, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 15);
             this.label3.TabIndex = 17;
@@ -219,18 +227,62 @@
             // 
             this.txtLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(251)))));
             this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtLog.Location = new System.Drawing.Point(72, 71);
+            this.txtLog.Location = new System.Drawing.Point(72, 117);
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
             this.txtLog.Size = new System.Drawing.Size(445, 13);
             this.txtLog.TabIndex = 18;
+            // 
+            // chkPostedToday
+            // 
+            this.chkPostedToday.AutoSize = true;
+            this.chkPostedToday.Checked = true;
+            this.chkPostedToday.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPostedToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPostedToday.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.chkPostedToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
+            this.chkPostedToday.Location = new System.Drawing.Point(19, 59);
+            this.chkPostedToday.Name = "chkPostedToday";
+            this.chkPostedToday.Size = new System.Drawing.Size(106, 19);
+            this.chkPostedToday.TabIndex = 19;
+            this.chkPostedToday.Text = "Posted Today";
+            this.chkPostedToday.UseVisualStyleBackColor = true;
+            // 
+            // chkHasImage
+            // 
+            this.chkHasImage.AutoSize = true;
+            this.chkHasImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkHasImage.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.chkHasImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
+            this.chkHasImage.Location = new System.Drawing.Point(163, 59);
+            this.chkHasImage.Name = "chkHasImage";
+            this.chkHasImage.Size = new System.Drawing.Size(88, 19);
+            this.chkHasImage.TabIndex = 20;
+            this.chkHasImage.Text = "Has Image";
+            this.chkHasImage.UseVisualStyleBackColor = true;
+            // 
+            // chkNearby
+            // 
+            this.chkNearby.AutoSize = true;
+            this.chkNearby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNearby.Font = new System.Drawing.Font("Raleway", 9.749999F, System.Drawing.FontStyle.Bold);
+            this.chkNearby.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(27)))), ((int)(((byte)(255)))));
+            this.chkNearby.Location = new System.Drawing.Point(289, 59);
+            this.chkNearby.Name = "chkNearby";
+            this.chkNearby.Size = new System.Drawing.Size(156, 19);
+            this.chkNearby.TabIndex = 21;
+            this.chkNearby.Text = "Include Nearby Areas";
+            this.chkNearby.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(251)))));
-            this.ClientSize = new System.Drawing.Size(804, 359);
+            this.ClientSize = new System.Drawing.Size(804, 426);
+            this.Controls.Add(this.chkNearby);
+            this.Controls.Add(this.chkHasImage);
+            this.Controls.Add(this.chkPostedToday);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnClear);
@@ -273,6 +325,9 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.CheckBox chkPostedToday;
+        private System.Windows.Forms.CheckBox chkHasImage;
+        private System.Windows.Forms.CheckBox chkNearby;
     }
 }
 
